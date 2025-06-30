@@ -1,14 +1,5 @@
 <template lang="pug">
 div.top-up-page
-  //- portal(to="layout-top")
-  //-   v-row.pb-0(align="center")
-  //-     v-col.d-flex.align-center
-  //-       AppGoBackIcon
-  //-       div.text-h6 {{$t('action.top_up')}}
-  //-     v-col
-  //-       v-breadcrumbs(:items="items" class="pa-0 justify-end")
-  //-         template(v-slot:divider)
-  //-           v-icon mdi-chevron-right
   AppBreadCrumbs(
     pageName="action.top_up"
     :crumbs="items"
@@ -62,19 +53,6 @@ div.top-up-page
           class="payment-form-btn rounded-lg mr-4 default-disable btn-back"
           depressed
           :to="'/cards'") Geriyə
-          //- v-btn(
-          //-   id="top_up_continue"
-          //-   :disabled="!topUpForm"
-          //-   v-if="step === 1"
-          //-   @click="topupContinue"
-          //-   :loading="loading"
-          //-   color="primary"
-          //-   x-large
-          //-   :block="isMobile"
-          //-   justify="end"
-          //-   class="payment-form-btn rounded-lg"
-          //-   :class="{'text-center': !isMobile}"
-          //-   depressed) {{ $t('action.continue') }}
           v-btn(
             id="top_up_confirm"
             v-if="step === 2"
@@ -90,14 +68,12 @@ import AppBreadCrumbs from '@/components/AppBreadCrumbs';
 import { PaymentRequests } from '@/services/http/payment-requests';
 import { MpayCobrandRequests } from '@/services/http/mpay-cobrand-requests';
 import AppPaymentSource from '@/components/AppPaymentSource';
-// import AppGoBackIcon from '@/components/AppGoBackIcon';
 
 export default {
   name: 'CobrandTopUp',
   components: {
     AppBreadCrumbs,
     AppPaymentSource,
-    // AppGoBackIcon,
   },
   data() {
     return {
@@ -225,26 +201,6 @@ export default {
         }
       }
     },
-    // async topupContinue() {
-    //   if (!this.$refs.topup.validate()) {
-    //     return;
-    //   }
-    //   this.loading = true;
-    //   const [response, error] = await PaymentRequests.calculateCommission(
-    //     {
-    //       orderType: 'TOP_UP',
-    //       amount: this.amount,
-    //       paymentSource: this.selected.type,
-    //     },
-    //   );
-    //   this.loading = false;
-    //   if (error) {
-    //     this.$notify.error(error?.errorDetails[0].message);
-    //   } else {
-    //     this.resultAmount = response.data;
-    //     this.step = 2;
-    //   }
-    // },
     getMaskedCard(cardNo) {
       if (cardNo) {
         // Extract the first 6 digits and the last 4 digits
