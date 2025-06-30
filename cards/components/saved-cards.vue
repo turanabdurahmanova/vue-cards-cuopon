@@ -1,17 +1,4 @@
 <template lang="pug">
-//- .card-saved-list(:class="!isCardOrderInfo && isSavedCard ? 'onlySavedCard' : 'bothCard'")
-//-   .empty-page(v-if="getCards.length===0")
-//-     .empty-page_wrapp
-//-       v-img.empty-page_img(src="@/assets/empty-card.png")
-//-       span.empty-page_txt {{ $t('misc.saved.index.empty') }}
-//-       v-btn.empty-page_btn(id="cards_go_dashboard_root" :to="{name: 'dashboard-root'}" depressed) {{ $t('action.go_dashboard') }}
-//-   template(v-else)
-//-     .alert(v-if="isCardOrderInfo" @click="openCardOrderSuccessDialog")
-//-       .alert__wrapper
-//-         .alert__wrapper__content {{ $t('label.card.order.status') }}
-//-         .alert__wrapper__icon
-//-           v-icon $right-arrow
-//-     h2.card-saved-info_left_title(v-if="!isCobrandCard") {{ $t('label.saved.cards') }}
 .card-saved-list
   .card-saved-list_item(v-if="getCards.length>0" v-for="card in getCards" :key="card.label")
     .card-saved-list_item_left
